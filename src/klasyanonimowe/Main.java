@@ -10,7 +10,7 @@ public class Main {
 //            }
 //        };
 
-//    //replaced with lambda expression:
+//    //replaced with lambda expressions:
 
         ZachowaniePoWciśnieciu z = () -> System.out.println("klasa anonimowa");
 
