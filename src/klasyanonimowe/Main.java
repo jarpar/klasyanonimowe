@@ -1,20 +1,24 @@
 package klasyanonimowe;
 
-
 public class Main {
-
     public static void main(String[] args) {
-        ZachowaniePoWcisnieciu z = () -> {
-            System.out.println("jestem z klasy anonimowej");
-        };
 
+        //        ZachowaniePoWciśnieciu z = new ZachowaniePoWciśnieciu() {
+//            @Override
+//            public void akcja() {
+//                System.out.println("klasa anonimowa");
+//            }
+//        };
+
+//    //replaced with lambda expressions:
+
+        ZachowaniePoWcisnieciu z = () -> System.out.println("klasa anonimowa");
         ZachowaniePoWcisnieciu2 z2 = (a, b) -> a + b;
 
-
+        //z.akcja();
         Przycisk p = new Przycisk();
-
         p.dodajAkcje(() -> {
-            System.out.println("jestem z klasy anonimowej");
+            System.out.println("z klasy anonimowej");
         });
 
         int wynik = p.dodajAkcje2(5, 10, z2);
@@ -22,7 +26,6 @@ public class Main {
         System.out.println(wynik);
 
     }
-
 }
 
 interface ZachowaniePoWcisnieciu {
@@ -33,7 +36,8 @@ interface ZachowaniePoWcisnieciu2 {
     int akcja2(int a, int b);
 }
 
-class Przycisk {
+
+class Przycisk {//} implements ZachowaniePoWciśnieciu {
 
     void dodajAkcje(ZachowaniePoWcisnieciu z) {
         z.akcja();
@@ -42,16 +46,11 @@ class Przycisk {
     int dodajAkcje2(int a, int b, ZachowaniePoWcisnieciu2 z) {
         return z.akcja2(a, b);
     }
-
-
 }
 
-/*
-    LAMBDA WYRAŻENIE:
-    () -> {}
-
-    () - tu podajemy argumentu do przesłania do funkcji
-    -> - strzałka szybka informacja że mamy do czynienia z wyrażeniem lambda
-    {} - Treść wyrażenia
-
-*/
+//    class Przycisk2 implements ZachowaniePoWciśnieciu {
+//        @Override
+//        public void akcja() {
+//            System.out.println("przycisk2");
+//        }
+//    }
