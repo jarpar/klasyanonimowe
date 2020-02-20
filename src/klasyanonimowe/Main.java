@@ -1,38 +1,57 @@
 package klasyanonimowe;
 
+
 public class Main {
+
     public static void main(String[] args) {
+        ZachowaniePoWcisnieciu z = () -> {
+            System.out.println("jestem z klasy anonimowej");
+        };
 
-        //        ZachowaniePoWciśnieciu z = new ZachowaniePoWciśnieciu() {
-//            @Override
-//            public void akcja() {
-//                System.out.println("klasa anonimowa");
-//            }
-//        };
+        ZachowaniePoWcisnieciu2 z2 = (a, b) -> a + b;
 
-//    //replaced with lambda expressions:
 
-        ZachowaniePoWciśnieciu z = () -> System.out.println("klasa anonimowa");
+        Przycisk p = new Przycisk();
 
-        z.akcja();
+        p.dodajAkcje(() -> {
+            System.out.println("jestem z klasy anonimowej");
+        });
+
+        int wynik = p.dodajAkcje2(5, 10, z2);
+
+        System.out.println(wynik);
 
     }
 
-    interface ZachowaniePoWciśnieciu {
-        void akcja();
-    }
-
-    class Przycisk implements ZachowaniePoWciśnieciu {
-        @Override
-        public void akcja() {
-            System.out.println("przycisk");
-        }
-    }
-
-    class Przycisk2 implements ZachowaniePoWciśnieciu {
-        @Override
-        public void akcja() {
-            System.out.println("przycisk2");
-        }
-    }
 }
+
+interface ZachowaniePoWcisnieciu {
+    void akcja();
+}
+
+interface ZachowaniePoWcisnieciu2 {
+    int akcja2(int a, int b);
+}
+
+class Przycisk {
+
+    void dodajAkcje(ZachowaniePoWcisnieciu z) {
+        z.akcja();
+    }
+
+    int dodajAkcje2(int a, int b, ZachowaniePoWcisnieciu2 z) {
+        return z.akcja2(a, b);
+    }
+
+
+}
+
+/*
+    LAMBDA WYRAŻENIE:
+    () -> {}
+
+    () - tu podajemy argumentu do przesłania do funkcji
+    -> - strzałka szybka informacja że mamy do czynienia z wyrażeniem lambda
+    {} - Treść wyrażenia
+
+*/
