@@ -25,6 +25,10 @@ public class Main {
 
         System.out.println(wynik);
 
+        System.out.println();
+        MakeCoffee m = () -> System.out.println("Hot!");
+        m.make();
+
     }
 }
 
@@ -54,3 +58,13 @@ class Przycisk {//} implements ZachowaniePoWciśnieciu {
 //            System.out.println("przycisk2");
 //        }
 //    }
+
+interface MakeCoffee {
+    void make();
+}
+
+class Coffee {
+    void make2Coffees(MakeCoffee m) {
+        m.make();
+    }
+}
