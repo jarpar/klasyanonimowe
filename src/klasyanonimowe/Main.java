@@ -2,12 +2,18 @@ package klasyanonimowe;
 
 public class Main {
     public static void main(String[] args) {
-        ZachowaniePoWciśnieciu z = new ZachowaniePoWciśnieciu() {
-            @Override
-            public void akcja() {
-                System.out.println("klasa anonimowa");
-            }
-        };
+
+        //        ZachowaniePoWciśnieciu z = new ZachowaniePoWciśnieciu() {
+//            @Override
+//            public void akcja() {
+//                System.out.println("klasa anonimowa");
+//            }
+//        };
+
+//    //replaced with lambda expression:
+
+        ZachowaniePoWciśnieciu z = () -> System.out.println("klasa anonimowa");
+
         z.akcja();
 
     }
